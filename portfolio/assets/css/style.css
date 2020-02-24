@@ -15,20 +15,25 @@ BE95C4
 html,body{
     font-family: 'Roboto', sans-serif;
     background-color: #0D0C1D;
+    overflow-x: hidden;
 }
 a{text-decoration: none;color:#ffffff;}
 li,ul{list-style: none;}
 
 /** HEADER **/
 header{
+    position: absolute;
     display: flex;
     align-items: center;
 
     width: 100vw;
     height: 64px;
-    padding: 0 15%;
-
-    background-color: #161B33;
+    padding: 0 15%; 
+}
+header.scrolled{
+    position: fixed;
+    background-color: rgba(22, 27, 51, 0.85);
+    animation: header-scroll 750ms;
 }
 header > a {
     font-weight: 900;
@@ -72,6 +77,69 @@ header > nav > ul > li:hover::after{
     width: 75%;
 }
 
+/** SECTIONS **/
+section{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+#first-section{
+    background-image: url("../../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-blend-mode: color;
+}
+
+/** TIMELINE **/
+.timeline{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+
+    width: 100px;
+    height: 300px;
+
+    margin-left: 15px;
+
+    top: 50%;
+    left: -25%;
+    transform: translateY(-50%);
+    transition: ease 500ms;
+
+    border-left: 2px solid #474973;
+    
+    color: white;
+
+    opacity: 0;
+}
+.timeline.active{
+    left:0;
+    opacity: 1;
+}
+.timeline > a{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    padding-left: 15px;
+    cursor: pointer;
+}
+.timeline > a::before{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    transform: translateX(-22px); /** 21 = a padding + half circle width + half border width **/
+    border-radius: 50%;
+    background-color: #BE95C4;
+}
+.timeline > a.timeline-active::before{
+    content: '';
+    animation: timeline-item 400ms;
+}
+
+/** RESPOSIVE **/
+
+/** ANIMATIONS **/
 @keyframes title{
     from{
         opacity: 0;
@@ -79,7 +147,22 @@ header > nav > ul > li:hover::after{
     }
 }
 @keyframes opacity{
+    from{
+        opacity: 0;
+    }
     to{
         opacity: 1;
+    }
+}
+@keyframes header-scroll {
+    from {top: -64px;}
+    to {top: 0;}
+}
+@keyframes timeline-item {
+    from{
+        transform: translateX(-22px) scale(0) ;
+    }
+    to{
+        transform: translateX(-22px) scale(1);
     }
 }

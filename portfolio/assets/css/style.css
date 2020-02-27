@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+/* Download later */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
 /**
 COLOR SCHEME
-0D0C1D
-161B33
-474973
-9F86C0
-BE95C4
+#0D0C1D
+#161B33
+#474973
+#9F86C0
+#BE95C4
 **/
+
+/** ______________ GLOBAL ______________ **/
 *{
     margin: 0;
     padding: 0;
@@ -17,10 +21,29 @@ html,body{
     background-color: #0D0C1D;
     overflow-x: hidden;
 }
-a{text-decoration: none;color:#ffffff;}
+a,p{text-decoration: none;color:#ffffff;}
 li,ul{list-style: none;}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+.container-fluid{
+    width: 100%;
+    margin: 0 auto;
+}
+a.disabled{
+    cursor: context-menu!important;
+    color: rgb(70, 70, 70)!important;
+    text-decoration: line-through;
+}
+hr{
+    height: 1px;
+    margin: 50px 0;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(190, 149, 196,0) , rgba(190, 149, 196, 0.75), rgba(190, 149, 196, 0));
+}
 
-/** HEADER **/
+/** ______________ HEADER ______________ **/
 header{
     position: absolute;
     display: flex;
@@ -29,17 +52,16 @@ header{
     width: 100vw;
     height: 64px;
     padding: 0 15%; 
+    z-index: 100;
 }
 header.scrolled{
     position: fixed;
-    background-color: rgba(22, 27, 51, 0.85);
-    animation: header-scroll 750ms;
+    background-color: rgba(13, 12, 29, 0.80);
+    animation: header-scroll 500ms;
 }
 header > a {
     font-weight: 900;
     font-size: 2rem;
-    
-    animation: title 300ms ease-out;
 }
 header > a > span{
     color: #BE95C4;
@@ -77,92 +99,155 @@ header > nav > ul > li:hover::after{
     width: 75%;
 }
 
-/** SECTIONS **/
+/** ______________ SECTIONS ______________ **/
 section{
     width: 100vw;
     min-height: 100vh;
+    padding: 10px 0;
+    overflow: auto;
 }
 
+/** MAIN TITLE **/
 #first-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+
     background-image: url("../../img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-blend-mode: color;
 }
+#first-section h1{
+    font-size: 3rem;
+}
+#first-section h2{
+    font-size: 1rem;
+    font-weight: 300;
+}
+#first-section button{
+    position: absolute;
+    bottom: 5%;
+    padding: 15px;
+    border: 1px solid rgb(122, 96, 155);
+    border-radius: 10px;
 
-/** TIMELINE **/
-.timeline{
-    position: fixed;
+    color: #ffffff;
+    background-color: #9F86C0;
+}
+
+/** PORTFOLIO **/
+#second-section{
+    display: flex;
+    background-color: #161B33;
+}
+#portfolio , #portfolio > .titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#portfolio{
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: stretch;
+}
+#portfolio > .titles{
+    margin: 10px;
+}
+#portfolio > .titles >  .moving{
+    margin-right:5px; 
+    font-size: 3rem;
+}
+#portfolio > .titles > .static{
+    position: relative;
     display: flex;
     flex-direction: column;
-
-    width: 100px;
-    height: 300px;
-
-    margin-left: 15px;
-
-    top: 50%;
-    left: -25%;
-    transform: translateY(-50%);
-    transition: ease 500ms;
-
-    border-left: 2px solid #474973;
-    
-    color: white;
-
-    opacity: 0;
+    color: #9F86C0;
 }
-.timeline.active{
-    left:0;
-    opacity: 1;
-}
-.timeline > a{
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    padding-left: 15px;
+#portfolio > .titles > .static > a{
+    margin: 0 5px 10px; 
+    font-size: 3rem;
+    color: rgba(190, 149, 196, 0.4);
     cursor: pointer;
 }
-.timeline > a::before{
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    transform: translateX(-22px); /** 21 = a padding + half circle width + half border width **/
-    border-radius: 50%;
-    background-color: #BE95C4;
-}
-.timeline > a.timeline-active::before{
-    content: '';
-    animation: timeline-item 400ms;
+#portfolio > .titles > .static > a.active{
+    font-weight: 700;
+    color: #BE95C4;
 }
 
-/** RESPOSIVE **/
 
-/** ANIMATIONS **/
-@keyframes title{
-    from{
-        opacity: 0;
-        transform: translateY(+40%);
-    }
+#portfolio > .content{
+    display: none;
+    justify-content: space-around;
+    width: 60%;
+    border: 1px solid #ffffff12;
 }
-@keyframes opacity{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
+#portfolio > .content > a{
+    -height: 750px; /*testing*/
 }
-@keyframes header-scroll {
-    from {top: -64px;}
-    to {top: 0;}
+#portfolio > .content > .loading{
+    width: 100px;
+    height: 100px;
 }
-@keyframes timeline-item {
-    from{
-        transform: translateX(-22px) scale(0) ;
-    }
-    to{
-        transform: translateX(-22px) scale(1);
-    }
+
+/** Cards **/
+.card-list{
+    display: flex;
+    justify-content: space-around;
+    
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    margin: 15px 15px 20px;
+    overflow: hidden;
+
+    border: 1px solid rgb(24, 29, 61);
+    border-radius: 10px;
+    background-color: #0D0C1D;
+}
+.card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.card > .options{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+.card > .options > a{
+    font-weight: 400;
+    color: #474973;
+}
+.card > .options > a:not(.disabled):hover{
+    text-decoration: underline;
+}
+.card > p{
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: #BE95C4;
+}
+.card > .icons{
+    display: flex;
+    justify-content: center;
+    color: #474973;
+    font-size: 1.3rem;
+}
+.card > .icons > i{
+    margin: 0 10px;
 }

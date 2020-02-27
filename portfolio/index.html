@@ -3,34 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Costa - CV</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Pedro Costa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="assets/css/resposive.css">
 </head>
 <body>
 
     <header>
-        <a href="#"><span>Pedro</span>Costa</a>
+        <a href="#0"><span>Pedro</span>Costa</a>
 
         <nav>
             <ul>
-                <li><a href="#first-section">cenas1</a></li>
-                <li><a href="#second-section">cenas2</a></li>
-                <li><a href="#0">cenas3</a></li>
+                <li><a href="#first-section">Home</a></li>
+                <li><a href="#second-section">Portfolio</a></li>
+                <li><a href="#0">About me</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="timeline">
-        <a href="#first-section" class="timeline-active">TESTE1</a>
-        <a href="#second-section">TESTE2</a>
+    <!-- <aside class="timeline">
+        <a href="#my-work" class="timeline-active">My work</a>
+        <a href="#my-reps">My Repositories</a>
         <a href="#third-section">TESTE3</a>
-    </div>
+    </aside> -->
 
     <main>
-        <section id="first-section"><a href="">teste</a></section>
-        <section id="second-section"><a href="">teste</a></section>
-        <section id="third-section"><a href="">teste</a></section>
+
+        <!-- Main title -->
+        <section id="first-section">
+            <h1>Developer</h1>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <button>See my work <i class="far fa-eye"></i></button>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="second-section">
+
+            <div id="portfolio" class="container">
+
+                <!-- Left section -->
+                <div class="titles">
+                    <a id="portfolio-selector" class="moving">my</a>
+                    <div id="portfolio-nav" class="static">
+                        <a class="active" for="work">Work</a>
+                        <a for="rep">Repositories</a>
+                        <a>option3</a>
+                        <a>option4</a>
+                    </div>
+                </div>
+
+                <!-- Right section -->
+                <!-- My Work -->
+                <div class="content card-list" data-target="work" style="display: flex;">
+                    <!-- card -->
+                    <div class="card fadein-effect">
+                        <img src="https://via.placeholder.com/500" />
+                        <div class="options">
+                            <a href="#0" class="disabled" title="Not available">View source <i class="fas fa-code"></i></a>
+                            <a href="#0">Live demo <i class="fas fa-eye"></i></a>
+                        </div>
+                        <p>TODO listTODO listTODO listTODO listTODO listTODO listTODO listTODO list</p>
+                        <div class="icons">
+                            <i class="fab fa-html5" title="HTML5"></i>
+                            <i class="fab fa-css3-alt" title="CSS3"></i>
+                            <i class="fab fa-js-square" title="jQuery"></i>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- My Reps -->
+                <div class="content" data-target="rep">
+                    <img class="loading" src="img/loading.svg" />
+                    <ul id="rep-list"  style="display: none">
+                        <!-- <li>
+                            <a href="">titutlo do RepositorRepositoriesRepositoriesRepositoriesRepositoriesRepositoriesies <i class="fas fa-link"></i></a>
+                            <p>description</p>
+                        </li>
+                        <li>asd</li>
+                        <li>asd</li>
+                        <li>asd</li> -->
+                        
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- About me -->
+        <section id="third-section"><a href="">Test</a></section>
+
     </main>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

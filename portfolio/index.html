@@ -12,8 +12,8 @@
 <body>
 
     <header>
-        <a href="#0"><span>Pedro</span>Costa</a>
-
+        <a class="logo" href="#0"><span>Pedro</span>Costa</a>
+        <a class="mobile-menu-icon"><i class="fa fa-bars"></i></a>
         <nav>
             <ul>
                 <li><a href="#first-section">Home</a></li>
@@ -22,6 +22,20 @@
             </ul>
         </nav>
     </header>
+
+
+    <nav id="mobile-nav" style="display: none">
+        <a id="mobile-nav-close"><i class="fa fa-times"></i></a>
+        <ul>
+            <li><a href="#first-section">Home</a></li>
+            <li><a href="#second-section">Portfolio</a></li>
+            <li><a href="#0">About me</a></li>
+            <li class="social-icons">
+                <i class="fab fa-github"></i>
+                <i class="fab fa-linkedin"></i>
+            </li>
+        </ul>
+    </nav>
 
     <!-- <aside class="timeline">
         <a href="#my-work" class="timeline-active">My work</a>
@@ -33,9 +47,16 @@
 
         <!-- Main title -->
         <section id="first-section">
-            <h1>Developer</h1>
+            <h1>Software/Web Developer</h1>
             <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-            <button>See my work <i class="far fa-eye"></i></button>
+            <div>
+                <a href=""><i class="fab fa-github"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="#second-section" class="call-to-action">
+                <span><i class="fas fa-arrow-down"></i></span>
+            </a>
+            
         </section>
 
         <!-- Portfolio -->
@@ -47,19 +68,69 @@
                 <div class="titles">
                     <a id="portfolio-selector" class="moving">my</a>
                     <div id="portfolio-nav" class="static">
-                        <a class="active" for="work">Work</a>
+                        <a class="active" for="work">Projects</a>
                         <a for="rep">Repositories</a>
                         <a>option3</a>
                         <a>option4</a>
                     </div>
+                </div>
+                <!-- Left section (MOBILE)-->
+                <div class="mobile-titles">
+                    <h1>hello</h1>
                 </div>
 
                 <!-- Right section -->
                 <!-- My Work -->
                 <div class="content card-list" data-target="work" style="display: flex;">
                     <!-- card -->
-                    <div class="card fadein-effect">
-                        <img src="https://via.placeholder.com/500" />
+                    <div class="card">
+                        <!-- <img src="https://via.placeholder.com/10" /> -->
+                        <img src="https://creativebeacon.com/wp-content/uploads/2014/08/open-cloud.jpg" />
+                        <div class="options">
+                            <a href="#0" class="disabled" title="Not available">View source <i class="fas fa-code"></i></a>
+                            <a href="#0">Live demo <i class="fas fa-eye"></i></a>
+                        </div>
+                        <p>TODO listTODO listTODO listTODO listTODO listTODO listTODO listTODO list</p>
+                        <div class="icons">
+                            <i class="fab fa-html5" title="HTML5"></i>
+                            <i class="fab fa-css3-alt" title="CSS3"></i>
+                            <i class="fab fa-js-square" title="jQuery"></i>
+                        </div>
+                    </div>
+                    <!-- card -->
+                    <div class="card">
+                        <!-- <img src="https://via.placeholder.com/10" /> -->
+                        <img src="https://creativebeacon.com/wp-content/uploads/2014/08/open-cloud.jpg" />
+                        <div class="options">
+                            <a href="#0" class="disabled" title="Not available">View source <i class="fas fa-code"></i></a>
+                            <a href="#0">Live demo <i class="fas fa-eye"></i></a>
+                        </div>
+                        <p>TODO listTODO listTODO listTODO listTODO listTODO listTODO listTODO list</p>
+                        <div class="icons">
+                            <i class="fab fa-html5" title="HTML5"></i>
+                            <i class="fab fa-css3-alt" title="CSS3"></i>
+                            <i class="fab fa-js-square" title="jQuery"></i>
+                        </div>
+                    </div>
+                    <!-- card -->
+                    <div class="card">
+                        <!-- <img src="https://via.placeholder.com/10" /> -->
+                        <img src="https://creativebeacon.com/wp-content/uploads/2014/08/open-cloud.jpg" />
+                        <div class="options">
+                            <a href="#0" class="disabled" title="Not available">View source <i class="fas fa-code"></i></a>
+                            <a href="#0">Live demo <i class="fas fa-eye"></i></a>
+                        </div>
+                        <p>TODO listTODO listTODO listTODO listTODO listTODO listTODO listTODO list</p>
+                        <div class="icons">
+                            <i class="fab fa-html5" title="HTML5"></i>
+                            <i class="fab fa-css3-alt" title="CSS3"></i>
+                            <i class="fab fa-js-square" title="jQuery"></i>
+                        </div>
+                    </div>
+                    <!-- card -->
+                    <div class="card">
+                        <!-- <img src="https://via.placeholder.com/10" /> -->
+                        <img src="https://creativebeacon.com/wp-content/uploads/2014/08/open-cloud.jpg" />
                         <div class="options">
                             <a href="#0" class="disabled" title="Not available">View source <i class="fas fa-code"></i></a>
                             <a href="#0">Live demo <i class="fas fa-eye"></i></a>
@@ -73,18 +144,10 @@
                     </div>
                 </div>
 
-                 <!-- My Reps -->
+                <!-- My Reps -->
                 <div class="content" data-target="rep">
                     <img class="loading" src="img/loading.svg" />
                     <ul id="rep-list"  style="display: none">
-                        <!-- <li>
-                            <a href="">titutlo do RepositorRepositoriesRepositoriesRepositoriesRepositoriesRepositoriesies <i class="fas fa-link"></i></a>
-                            <p>description</p>
-                        </li>
-                        <li>asd</li>
-                        <li>asd</li>
-                        <li>asd</li> -->
-                        
                     </ul>
                 </div>
 

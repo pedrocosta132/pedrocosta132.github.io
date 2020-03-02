@@ -10,9 +10,13 @@ $(function(){
 
     //Add animation delay to nav links dynamically
     $("header > nav > ul > li").each(function(index){
-        $(this).css({
-             'animation-delay' : (400*index) + 'ms'
-        });
+        // $(this).css({
+        //      'animation-delay' : (400*index) + 'ms'
+        // });
+        var delay = 500 + (1000*index);
+        $(this).animate({
+            opacity: 1
+        }, delay)
     });
 
     //----------LISTENERS----------
@@ -28,7 +32,7 @@ $(function(){
 
     //Change timeline active element on click
     $('.timeline > a').on('click',function(){
-
+   
         $('.timeline > a').removeClass('timeline-active');
         $(this).addClass('timeline-active');
 
@@ -37,13 +41,19 @@ $(function(){
     //Smooth scroll
     $('a[href^="#"]').not('[href="#0"]').not('[href="#"]').on('click',function(event){
         event.preventDefault();
-
+ 
         var target = $($(this).attr('href'));
 
-        if(target.length)
+        if(target.length){
+            //If mobile close nav menu
+            if($('#mobile-nav').is(':visible'))
+                $('#mobile-nav').slideToggle(200)
+
+            //animation
             $('html,body').animate({
                 scrollTop: target.offset().top
             }, 500);
+        }
     });
 
     //Portfolio section navigation
@@ -67,9 +77,14 @@ $(function(){
         toShow.css('display','flex').hide().fadeIn(1000);
 
         //Load repositories
-        var attr = $('#rep-list').attr('done');
-        if(target === 'rep' && (typeof attr === typeof undefined || attr === false))
+        if(target === 'rep' && !$('#rep-list[done]').length)
             loadRepositories();
+
+    });
+
+    //Open/close mobile navigation bar
+    $('.mobile-menu-icon, #mobile-nav-close').on('click',function(){
+        $('#mobile-nav').slideToggle(200)
     });
 
     //----------FUNCTIONS----------
@@ -87,30 +102,44 @@ $(function(){
     //Load my public repositories from github
     function loadRepositories(){
         console.log('cenas');
-        return;
-        $.get(url,
+        //return;
+
+        var rep_list = $('#rep-list'),
+            list = '';
+
+        $.get('https://api.github.com/users/pedrocosta132/repos',
         null,
         function(data, status){
 
-            console.log(data);
-
-            var rep_list = $('#rep-list');
-            //data = null;
             if(status == 'success' && data != null){
-                $('#rep-list img').hide('normal');
+
                 rep_list.html('');
+
                 data.forEach(d => {
                     //add to rep list
                     if(d.description == null)
                         d.description = '...';
-                    //rep_list.append(`<li><a target="_blank" href="${d.html_url}">${d.name} <i class="fas fa-link"></i></a><p>${d.description}</p></li>`);
-                    console.log(d.name);
+                    for(var i = 0;i < 2;i++) //delete this line - testing exclusive
+                        list += `<li><a target="_blank" href="${d.html_url}">${d.name} <i class="fas fa-link"></i></a><p>${d.description}</p></li>`;
                 });
+
             }else
+
                 rep_list.html('<li>No repository found</li>');  
 
         }).fail(function(xhr){
             console.log("Error " + xhr.status + " - " + xhr.statusText);
+            rep_list.html('<li>No repository found</li>');  
+        })
+        .done(function(){
+            $('#rep-list').attr( 'done', true )
+            setTimeout( function(){ 
+                $('.loading').fadeOut().promise().done(function(){
+                    rep_list.html(list);
+                    rep_list.fadeIn(); 
+                });   
+            }  , 1000 );
+            
         });
     }
 
